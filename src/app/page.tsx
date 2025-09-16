@@ -26,6 +26,7 @@ interface LoveLetter {
   title: string;
   content: string;
   from: string;
+  image?: string;
 }
 
 export default function AnniversaryWebsite() {
@@ -66,47 +67,52 @@ export default function AnniversaryWebsite() {
     {
       date: '2025-08-16',
       title: 'Our First Trip',
-      description: 'Adventures at Qutab Minar, the city of love',
+      description: 'Adventures at Qutab Minar',
       image: '/simran/IMG-20250916-WA0008.jpg'
     },
     {
-      date: '2023-12-31',
-      title: 'New Year\'s Promise',
-      description: 'Starting the new year with promises of forever',
+      date: '2025-09-17',
+      title: 'Promise',
+      description: 'Starting with promises of forever',
       image: '/simran/IMG-20250916-WA0009.jpg'
     }
   ];
 
   const loveLetters: LoveLetter[] = [
     {
-      date: '2022-03-01',
+      date: '2025-09-17',
       title: 'To My Sunshine',
       content: 'Every morning I wake up grateful for you in my life. Your smile brightens my darkest days and your laugh is my favorite melody. I love how you make ordinary moments extraordinary just by being there.',
-      from: 'Your Forever Love'
+      from: 'Your Forever Love',
+      image: '/simran/IMG-20250916-WA0005.jpg'
     },
     {
-      date: '2022-07-15',
+      date: '2025-09-17',
       title: 'My Heart\'s Home',
       content: 'They say home is where the heart is, and my heart is wherever you are. You\'ve shown me what unconditional love feels like, and I promise to love you with the same intensity every single day.',
-      from: 'Your Soulmate'
+      from: 'Your Soulmate',
+      image: '/simran/IMG-20250916-WA0007.jpg'
     },
     {
-      date: '2022-11-23',
+      date: '2025-09-17',
       title: 'Thankful for You',
       content: 'On this day of gratitude, I want you to know that you are my greatest blessing. Thank you for loving me exactly as I am, for supporting my dreams, and for building this beautiful life with me.',
-      from: 'Your Grateful Heart'
+      from: 'Your Grateful Heart',
+      image: '/simran/IMG-20250916-WA0010.jpg'
     },
     {
-      date: '2023-02-14',
+      date: '2025-09-17',
       title: 'Valentine\'s Promise',
-      content: 'Another Valentine\'s Day, another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
-      from: 'Your Valentine'
+      content: 'Another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
+      from: 'Your Love',
+      image: '/simran/IMG-20250916-WA0012.jpg'
     },
     {
-      date: '2023-09-10',
+      date: '2025-09-17',
       title: 'Growing Together',
       content: 'We\'ve grown so much together this year. Through every challenge and every joy, we\'ve become stronger as a team. I\'m excited for all the adventures still waiting for us.',
-      from: 'Your Partner in Everything'
+      from: 'Your Partner in Everything',
+      image: '/simran/IMG-20250916-WA0014.jpg'
     }
   ];
 
@@ -415,7 +421,6 @@ export default function AnniversaryWebsite() {
                 Open Your Surprise 💝
               </a>
               <p className="text-sm text-pink-600 mt-4">
-                (Replace the link above with your Google Drive album/video)
               </p>
             </motion.div>
           )}
@@ -498,7 +503,7 @@ const LoveLetterCard: React.FC<{ letter: LoveLetter; index: number }> = ({ lette
       <div className="bg-white p-4 pb-12 shadow-2xl">
         <div className="aspect-square mb-4 overflow-hidden border border-gray-200">
           <Image 
-            src={`/simran/IMG-20250916-WA${String(3 + (index % 16)).padStart(4, '0')}.jpg`} 
+            src={letter.image || '/simran/IMG-20250916-WA0005.jpg'} 
             alt={letter.title}
             width={300}
             height={300}
