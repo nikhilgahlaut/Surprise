@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ec4899, #be185d);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #be185d, #ec4899);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 50%, #e0e7ff 100%);
+  min-height: 100vh;
+}
+
+/* Custom heart shapes for particles */
+.heart-particle {
+  width: 20px;
+  height: 18px;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.heart-particle:before,
+.heart-particle:after {
+  content: '';
+  width: 10px;
+  height: 16px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  background: #ff69b4;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart-particle:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-45deg);
+  }
+}
+
+/* Music button pulse animation */
+.music-button {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(236, 72, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+  }
+}
+
+/* Custom slider dots */
+.slick-dots li button:before {
+  color: #ec4899;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #be185d;
+}
+
+/* Love letter hover effects */
+.love-letter-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Timeline animations */
+.timeline-item {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.timeline-item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.timeline-item:nth-child(even).in-view {
+  transform: translateX(0);
+}
+
+/* Floating animation for hearts */
+.floating-heart {
+  animation: floatingHeart 3s ease-in-out infinite;
+}
+
+@keyframes floatingHeart {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Gradient text animations */
+.gradient-text {
+  background: linear-gradient(45deg, #ec4899, #be185d, #7c3aed, #3b82f6);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Backdrop blur effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Custom button animations */
+.romantic-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.romantic-button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.romantic-button:hover:before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Photo gallery enhancements */
+.photo-gallery img {
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Countdown timer enhancements */
+.countdown-box {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: countdownPulse 2s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+  }
+}
+
+/* Surprise button glow */
+.surprise-button {
+  position: relative;
+  background: linear-gradient(45deg, #ec4899, #7c3aed);
+  animation: surpriseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes surpriseGlow {
+  from {
+    box-shadow: 0 5px 20px rgba(236, 72, 153, 0.4);
+  }
+  to {
+    box-shadow: 0 5px 30px rgba(236, 72, 153, 0.7), 0 10px 40px rgba(124, 58, 237, 0.3);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .timeline-item {
+    transform: translateY(30px);
+  }
+  
+  .timeline-item.in-view {
+    transform: translateY(0);
+  }
+  
+  .love-letter-card {
+    margin-bottom: 1rem;
+  }
+}
