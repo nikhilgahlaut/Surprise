@@ -30,6 +30,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
     e.preventDefault();
     if (input.toLowerCase() === password.toLowerCase()) {
       onUnlock();
+      setTimeout(() => window.location.reload(), 500);
     } else {
       setError(true);
       setInput('');

@@ -378,7 +378,7 @@ export default function AnniversaryWebsite() {
           <h2 className="text-5xl md:text-6xl font-bold text-pink-600 mb-8" style={{ fontFamily: 'Dancing Script, cursive' }}>
             Counting to Forever ⏳
           </h2>
-          <p className="text-xl text-pink-700 mb-12">Time until our special day</p>
+          <p className="text-xl text-pink-700 mb-12">Time until our Next special day</p>
           
           <CustomCountdown />
         </motion.div>
