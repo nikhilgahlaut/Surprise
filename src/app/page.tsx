@@ -7,9 +7,6 @@ import LockScreen from '../components/LockScreen';
 import { FaPlay, FaPause, FaHeart, FaGift } from 'react-icons/fa';
 import { IoMdHeart } from 'react-icons/io';
 import Slider from 'react-slick';
-import Particles from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
-import type { Engine } from '@tsparticles/engine';
 
 // Import CSS for react-slick
 import 'slick-carousel/slick/slick.css';
@@ -51,7 +48,7 @@ export default function AnniversaryWebsite() {
     {
       date: '2021-01-19',
       title: 'First Date',
-      description: 'That magical Valentine\'s Day dinner where time stood still',
+      description: 'That magical Valentine&apos;s Day dinner where time stood still',
       image: '/simran/IMG-20250916-WA0005.jpg'
     },
     {
@@ -74,7 +71,7 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2023-12-31',
-      title: 'New Year\'s Promise',
+      title: 'New Year&apos;s Promise',
       description: 'Starting the new year with promises of forever',
       image: '/simran/IMG-20250916-WA0009.jpg'
     }
@@ -89,8 +86,8 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2022-07-15',
-      title: 'My Heart\'s Home',
-      content: 'They say home is where the heart is, and my heart is wherever you are. You\'ve shown me what unconditional love feels like, and I promise to love you with the same intensity every single day.',
+      title: 'My Heart&apos;s Home',
+      content: 'They say home is where the heart is, and my heart is wherever you are. You&apos;ve shown me what unconditional love feels like, and I promise to love you with the same intensity every single day.',
       from: 'Your Soulmate'
     },
     {
@@ -101,14 +98,14 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2023-02-14',
-      title: 'Valentine\'s Promise',
-      content: 'Another Valentine\'s Day, another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
+      title: 'Valentine&apos;s Promise',
+      content: 'Another Valentine&apos;s Day, another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
       from: 'Your Valentine'
     },
     {
       date: '2023-09-10',
       title: 'Growing Together',
-      content: 'We\'ve grown so much together this year. Through every challenge and every joy, we\'ve become stronger as a team. I\'m excited for all the adventures still waiting for us.',
+      content: 'We&apos;ve grown so much together this year. Through every challenge and every joy, we&apos;ve become stronger as a team. I&apos;m excited for all the adventures still waiting for us.',
       from: 'Your Partner in Everything'
     }
   ];
@@ -122,10 +119,7 @@ export default function AnniversaryWebsite() {
     '/simran/IMG-20250916-WA0019.jpg'
   ];
 
-  // Initialize particles
-  const particlesInit = async (engine: Engine) => {
-    await loadSlim(engine);
-  };
+
 
   // Handle music toggle
   const toggleMusic = () => {
@@ -199,80 +193,7 @@ export default function AnniversaryWebsite() {
         <IoMdHeart className="glowing-heart text-2xl" />
         <IoMdHeart className="glowing-heart text-xl" />
       </div>
-      {/* Floating Hearts Background */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        className="absolute inset-0 z-0"
-        options={{
-          background: {
-            color: {
-              value: "transparent",
-            },
-          },
-          fpsLimit: 60,
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: "push",
-              },
-              onHover: {
-                enable: true,
-                mode: "repulse",
-              },
-              resize: {
-                enable: true,
-                delay: 0.5
-              },
-            },
-            modes: {
-              push: {
-                quantity: 4,
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: ["#FF69B4", "#FF1493", "#DC143C", "#FF6347"],
-            },
-            links: {
-              enable: false,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 15,
-            },
-            opacity: {
-              value: 0.7,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 8, max: 20 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
+
 
       {/* Background Music */}
       <audio
@@ -484,7 +405,7 @@ export default function AnniversaryWebsite() {
             className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg mb-8"
           >
             <FaGift className="inline mr-2" />
-            {surpriseClickCount === 0 && "There's something special here..."}
+            {surpriseClickCount === 0 && "There&apos;s something special here..."}
             {surpriseClickCount === 1 && "One more click... 🎁"}
             {surpriseClickCount === 2 && "Click again for a surprise! ✨"}
           </motion.button>
@@ -500,7 +421,7 @@ export default function AnniversaryWebsite() {
                 Special Surprise! 🎉
               </h3>
               <p className="text-lg text-pink-700 mb-6">
-                I've created something extra special just for you...
+                I&apos;ve created something extra special just for you...
               </p>
               <a
                 href="https://drive.google.com/your-special-album-or-video"

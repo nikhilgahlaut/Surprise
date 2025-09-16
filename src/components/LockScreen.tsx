@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoMdHeart } from 'react-icons/io';
 
@@ -12,6 +12,18 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
   const password = 'simmu';
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Auto-focus input on mobile
+    const timer = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+        inputRef.current.click();
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +33,9 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
       setError(true);
       setInput('');
       setTimeout(() => setError(false), 2000);
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }
   };
 
@@ -74,14 +89,25 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
         
         <form onSubmit={handleSubmit} className='space-y-6'>
           <motion.input 
+            ref={inputRef}
             type='text'
+            inputMode='text'
+            autoComplete='off'
+            autoCapitalize='off'
+            autoCorrect='off'
+            spellCheck='false'
             className={`w-full px-6 py-4 bg-white/70 backdrop-blur-sm border-2 rounded-3xl text-center text-lg font-medium placeholder-pink-400 focus:outline-none focus:border-pink-500 focus:bg-white/80 focus:shadow-lg transition-all duration-300 ${
               error ? 'border-red-400 animate-pulse' : 'border-pink-300/50'
             }`}
             placeholder='Your nickname...'
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            autoFocus
+            onFocus={() => {
+              // Ensure keyboard stays open on mobile
+              if (inputRef.current) {
+                inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }}
             animate={error ? { x: [-10, 10, -10, 10, 0] } : {}}
             transition={{ duration: 0.5 }}
           />
