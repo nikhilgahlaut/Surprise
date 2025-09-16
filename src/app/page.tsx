@@ -34,6 +34,14 @@ export default function AnniversaryWebsite() {
   const [showSurprise, setShowSurprise] = useState(false);
   const [surpriseClickCount, setSurpriseClickCount] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
+
+  const handleUnlock = () => {
+    setIsUnlocked(true);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.body.style.zoom = '1';
+    }, 100);
+  };
   const audioRef = useRef<HTMLAudioElement>(null);
 
 
@@ -152,7 +160,7 @@ export default function AnniversaryWebsite() {
 
 
   if (!isUnlocked) {
-    return <LockScreen onUnlock={() => setIsUnlocked(true)} />;
+    return <LockScreen onUnlock={handleUnlock} />;
   }
 
   return (
