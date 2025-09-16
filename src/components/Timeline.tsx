@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Countdown from './Countdown';
+import Image from 'next/image';
 
 export default function Timeline() {
   const events = [
@@ -22,7 +23,7 @@ export default function Timeline() {
       <div className='max-w-xl mx-auto space-y-8'>
         {events.map((e, i) => (
           <motion.div key={i} className='bg-white rounded-2xl shadow p-4' initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} transition={{duration:0.5}}>
-            <img src={e.img} alt={e.title} className='w-full rounded-xl mb-4'/>
+            <Image src={e.img} alt={e.title} width={400} height={300} className='w-full rounded-xl mb-4'/>
             <h2 className='text-2xl font-semibold'>{e.title}</h2>
             <p className='text-gray-500 text-sm'>{e.date}</p>
             <p className='mt-2'>{e.text}</p>

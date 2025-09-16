@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export default function Countdown() {
-  const target = new Date('2025-09-20');
+  const target = useMemo(() => new Date('2025-09-20'), []);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, completed: false });
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Countdown() {
       setTimeLeft({ days, hours, minutes, seconds, completed: false });
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [target]);
 
   if (timeLeft.completed) {
     return <span className="text-6xl md:text-8xl font-bold text-pink-600">Happy Anniversary! 💕</span>;

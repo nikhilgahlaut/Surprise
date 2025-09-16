@@ -2,9 +2,10 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import CustomCountdown from '../components/Countdown';
 import LockScreen from '../components/LockScreen';
-import { FaPlay, FaPause, FaHeart, FaGift } from 'react-icons/fa';
+import { FaPlay, FaPause, FaGift } from 'react-icons/fa';
 import { IoMdHeart } from 'react-icons/io';
 import Slider from 'react-slick';
 
@@ -34,8 +35,7 @@ export default function AnniversaryWebsite() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Anniversary date - change this to your actual date
-  const anniversaryDate = new Date('2024-12-25T00:00:00');
+
 
   // Placeholder data - replace with your own
   const milestones: Milestone[] = [
@@ -48,12 +48,12 @@ export default function AnniversaryWebsite() {
     {
       date: '2021-01-19',
       title: 'First Date',
-      description: 'That magical Valentine&apos;s Day dinner where time stood still',
+      description: 'That magical Valentine\'s Day dinner where time stood still',
       image: '/simran/IMG-20250916-WA0005.jpg'
     },
     {
       date: '2020-09-17',
-      title: 'First "I Love You"',
+      title: 'First I Love You',
       description: 'Three little words that changed everything',
       image: '/simran/IMG-20250916-WA0006.jpg'
     },
@@ -71,7 +71,7 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2023-12-31',
-      title: 'New Year&apos;s Promise',
+      title: 'New Year\'s Promise',
       description: 'Starting the new year with promises of forever',
       image: '/simran/IMG-20250916-WA0009.jpg'
     }
@@ -86,8 +86,8 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2022-07-15',
-      title: 'My Heart&apos;s Home',
-      content: 'They say home is where the heart is, and my heart is wherever you are. You&apos;ve shown me what unconditional love feels like, and I promise to love you with the same intensity every single day.',
+      title: 'My Heart\'s Home',
+      content: 'They say home is where the heart is, and my heart is wherever you are. You\'ve shown me what unconditional love feels like, and I promise to love you with the same intensity every single day.',
       from: 'Your Soulmate'
     },
     {
@@ -98,14 +98,14 @@ export default function AnniversaryWebsite() {
     },
     {
       date: '2023-02-14',
-      title: 'Valentine&apos;s Promise',
-      content: 'Another Valentine&apos;s Day, another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
+      title: 'Valentine\'s Promise',
+      content: 'Another Valentine\'s Day, another year of falling deeper in love with you. I promise to keep choosing you, every single day, in every single way. You are my always and forever.',
       from: 'Your Valentine'
     },
     {
       date: '2023-09-10',
       title: 'Growing Together',
-      content: 'We&apos;ve grown so much together this year. Through every challenge and every joy, we&apos;ve become stronger as a team. I&apos;m excited for all the adventures still waiting for us.',
+      content: 'We\'ve grown so much together this year. Through every challenge and every joy, we\'ve become stronger as a team. I\'m excited for all the adventures still waiting for us.',
       from: 'Your Partner in Everything'
     }
   ];
@@ -141,26 +141,7 @@ export default function AnniversaryWebsite() {
     }
   };
 
-  // Slider settings
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    fade: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
-    ]
-  };
+
 
 
 
@@ -358,9 +339,11 @@ export default function AnniversaryWebsite() {
                 <div className="polaroid-card mx-auto">
                   <div className="bg-white p-4 pb-16 shadow-2xl">
                     <div className="aspect-square mb-4 overflow-hidden border border-gray-200">
-                      <img 
+                      <Image 
                         src={image} 
                         alt={`Memory ${index + 1}`}
+                        width={300}
+                        height={300}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -405,9 +388,9 @@ export default function AnniversaryWebsite() {
             className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg mb-8"
           >
             <FaGift className="inline mr-2" />
-            {surpriseClickCount === 0 && "There&apos;s something special here..."}
-            {surpriseClickCount === 1 && "One more click... 🎁"}
-            {surpriseClickCount === 2 && "Click again for a surprise! ✨"}
+            {surpriseClickCount === 0 && 'There&apos;s something special here...'}
+            {surpriseClickCount === 1 && 'One more click... 🎁'}
+            {surpriseClickCount === 2 && 'Click again for a surprise! ✨'}
           </motion.button>
 
           {showSurprise && (
@@ -475,9 +458,11 @@ const TimelineItem: React.FC<{ milestone: Milestone; index: number }> = ({ miles
     >
       <div className="bg-white p-4 pb-16 shadow-2xl transform transition-all duration-300">
         <div className="aspect-square mb-4 overflow-hidden border border-gray-200">
-          <img 
-            src={milestone.image} 
+          <Image 
+            src={milestone.image || ''} 
             alt={milestone.title}
+            width={300}
+            height={300}
             className="w-full h-full object-cover"
           />
         </div>
@@ -512,9 +497,11 @@ const LoveLetterCard: React.FC<{ letter: LoveLetter; index: number }> = ({ lette
     >
       <div className="bg-white p-4 pb-12 shadow-2xl">
         <div className="aspect-square mb-4 overflow-hidden border border-gray-200">
-          <img 
+          <Image 
             src={`/simran/IMG-20250916-WA${String(3 + (index % 16)).padStart(4, '0')}.jpg`} 
             alt={letter.title}
+            width={300}
+            height={300}
             className="w-full h-full object-cover"
           />
         </div>

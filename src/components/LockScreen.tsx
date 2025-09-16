@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IoMdHeart } from 'react-icons/io';
+import Image from 'next/image';
 
 interface LockScreenProps {
   onUnlock: () => void;
@@ -41,10 +42,11 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
 
   return (
     <div className='min-h-screen relative flex items-center justify-center p-4'>
-      <img 
+      <Image 
         src='/simran/main.jpg' 
         alt='Background'
-        className='absolute inset-0 w-full h-full object-cover'
+        fill
+        className='object-cover'
       />
       <div className='absolute inset-0 bg-black/40'></div>
       <motion.div 
