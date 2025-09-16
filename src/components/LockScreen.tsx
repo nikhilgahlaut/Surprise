@@ -29,7 +29,20 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.toLowerCase() === password.toLowerCase()) {
-      onUnlock();
+      // Blur input to close keyboard and reset zoom
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
+      
+      setTimeout(() => {
+        // Reset viewport and zoom
+        const viewport = document.querySelector('meta[name=viewport]');
+        if (viewport) {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes');
+        }
+        window.scrollTo(0, 0);
+        onUnlock();
+      }, 300);
     } else {
       setError(true);
       setInput('');
@@ -104,11 +117,11 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
             placeholder='Your nickname...'
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onFocus={() => {
-              // Ensure keyboard stays open on mobile
-              if (inputRef.current) {
-                inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }
+            onBlur={() => {
+              // Reset zoom when input loses focus
+              setTimeout(() => {
+                window.scrollTo(0, 0);
+              }, 100);
             }}
             animate={error ? { x: [-10, 10, -10, 10, 0] } : {}}
             transition={{ duration: 0.5 }}
